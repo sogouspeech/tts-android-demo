@@ -1,0 +1,237 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".SgTTSActivity" >
+
+    <TextView
+        android:id="@+id/sdk_speed_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Speed(-5~5)"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/voice_speed_edt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/sdk_speed_tv"
+        android:text="0"
+        android:layout_alignBaseline="@id/sdk_speed_tv"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <CheckBox
+        android:id="@+id/batch_mode_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/sdk_speed_tv"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        android:text="@string/batch_mode" />
+
+    <TextView
+        android:id="@+id/sdk_volume_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volume(0~9)"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/sdk_speed_tv"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/voice_volume_edt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/sdk_volume_tv"
+        android:text="9"
+        android:layout_below="@id/sdk_speed_tv"
+        android:layout_alignBaseline="@id/sdk_volume_tv"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/sdk_pitch_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sdk_speed_tv"
+        android:layout_toRightOf="@id/voice_volume_edt"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+
+        android:text="Pitch(-5~5)"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/voice_pitch_edt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/sdk_pitch_tv"
+        android:text="0"
+        android:layout_below="@id/sdk_speed_tv"
+        android:layout_alignBaseline="@id/sdk_volume_tv"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Switch
+        android:id="@+id/switch_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@id/voice_pitch_edt"
+        android:layout_marginLeft="20dp"
+        android:checked="false"
+        android:showText="true"
+        android:switchPadding="10dp"
+        android:text="离在线:"
+        android:textOff="离线"
+        android:textOn="在线"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:visibility="gone"
+         />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_below="@id/switch_mode"
+        android:layout_width="180dp"
+        android:background="@android:color/darker_gray"
+        android:visibility="gone"
+        android:layout_height="40dp"></Spinner>
+
+<Spinner
+    android:id="@+id/spinner2"
+    android:layout_below="@id/switch_mode"
+    android:background="@android:color/darker_gray"
+    android:layout_width="180dp"
+    android:visibility="visible"
+    android:layout_height="40dp"></Spinner>
+
+
+    <EditText
+        android:id="@+id/synth_content_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switch_mode"
+        android:ems="10"
+        android:layout_marginTop="50dp"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:lines="@integer/line_num"
+        android:text="@string/synth_content" />
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/synth_content_edt" >
+
+        <Button
+            android:id="@+id/play_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/play" />
+
+        <Button
+            android:id="@+id/stop_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/stop" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear1" >
+
+        <Button
+            android:id="@+id/pause_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/pause" />
+
+        <Button
+            android:id="@+id/resume_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/resume" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear2" >
+
+        <Button
+            android:id="@+id/add_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:enabled="true"
+            android:text="@string/add" />
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/file_path_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear4"
+        android:ems="10"
+        android:visibility="gone"
+
+        android:text="/sdcard/test.txt" />
+
+    <LinearLayout
+        android:id="@+id/linear3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/file_path_edt" >
+
+        <Button
+            android:id="@+id/replay_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:visibility="gone"
+
+            android:text="@string/replay" />
+
+        <Button
+            android:id="@+id/next_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:visibility="gone"
+
+            android:text="@string/next" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/log_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear3"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:lines="@integer/small_line_num" />
+
+
+
+
+
+</RelativeLayout>
+</ScrollView>
