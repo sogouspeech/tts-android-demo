@@ -17,9 +17,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 
-import com.sogou.tts.offline.TTSPlayer;
-import com.sogou.tts.offline.listener.TTSPlayerListener;
-import com.sogou.tts.offline.utils.Mode;
+import com.sogou.tts.TTSPlayer;
+import com.sogou.tts.listener.TTSPlayerListener;
+import com.sogou.tts.utils.Mode;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

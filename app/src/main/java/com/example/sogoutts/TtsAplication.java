@@ -2,7 +2,7 @@ package com.example.sogoutts;
 
 import android.support.multidex.MultiDexApplication;
 
-import com.sogou.tts.offline.TTSPlayer;
+import com.sogou.tts.TTSPlayer;
 
 public class TtsAplication extends MultiDexApplication {
 
