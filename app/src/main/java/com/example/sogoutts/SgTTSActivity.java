@@ -188,7 +188,7 @@ public class SgTTSActivity extends Activity
 		// init data
 
 
-		if ((mTTSPlayer.init(this, ttsPlayerlistener,""+android.os.Build.SERIAL))<0){
+		if ((mTTSPlayer.init(this, ttsPlayerlistener))<0){
 //		if ((mTTSPlayer.init(this, "/sdcard/SogouTTS/newmodel/","dict.dat",snds[0], ttsPlayerlistener))<0) {
 			showLog(R.string.synth_initialized_failure);
 //			mPlayBtn.setClickable(false);

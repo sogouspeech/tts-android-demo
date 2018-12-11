@@ -17,16 +17,8 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme" >
 
-        <meta-data android:name="com.sogou.speech.common-userID"
-            android:value="000@sogou-inc.com"/>
-        <meta-data android:name="com.sogou.speech.common-appID"
-            android:value="111"/>
 
-        <meta-data
-            android:name="com.sogou.speech.common-appkey"
-            android:value="222==" />
 
-        
         <activity
             android:name="com.example.sogoutts.SgTTSActivity"
             android:label="@string/app_name"
