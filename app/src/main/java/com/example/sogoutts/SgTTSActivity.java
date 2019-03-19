@@ -19,8 +19,12 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
 
+import com.sogou.sogocommon.utils.CommonSharedPreference;
+import com.sogou.sogocommon.utils.LogUtil;
 import com.sogou.tts.TTSPlayer;
+import com.sogou.tts.auth.TokenFetchTask;
 import com.sogou.tts.listener.TTSPlayerListener;
 import com.sogou.tts.utils.Mode;
 
@@ -88,6 +92,13 @@ public class SgTTSActivity extends Activity
 			
 		bindView();
 		setListener();
+		if (TextUtils.isEmpty(TTSPlayer.sBaseUrl)) {
+			TTSPlayer.sBaseUrl = "api.zhiyin.sogou.com";
+
+            CommonSharedPreference.getInstance(this).setString("uuid", ""); // 设置用户uuid
+            CommonSharedPreference.getInstance(this).setString("appid", ""); // 设置从知音平台获取的appid
+            CommonSharedPreference.getInstance(this).setString("appkey", "");
+		}
 
 		mTTSPlayer = new TTSPlayer();
 		ttsPlayerlistener = new DemoTTSPlayerListener();
@@ -213,10 +224,13 @@ public class SgTTSActivity extends Activity
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 			case R.id.play_btn :
-//				doSynthStop();
-				doSynthPlay();
-//				String longtext = mSynthContentEdt.getText().toString();
-//				mTTSPlayer.playOnline(longtext,TTSPlayer.QUEUE_FLUSH,"play");
+				long expTime = CommonSharedPreference.getInstance(SgTTSActivity.this).getLong(CommonSharedPreference.TIMEOUT_STAMP, 0L);//获取token过期时间戳，单位是秒
+				long timeGap = (expTime - 60 * 30) * 1000;//如果当前时间在过期前半小时范围内的话，那么刷新token
+				if (timeGap - System.currentTimeMillis() < 0) {
+					fetchToken();
+				} else {
+					doSynthPlay();
+				}
 				break;
 			case R.id.pause_btn :
 				doSynthPause();
@@ -237,6 +251,44 @@ public class SgTTSActivity extends Activity
 				doSynthAdd();
 				break;
 		}
+	}
+
+	private void fetchToken() {
+			if (TextUtils.isEmpty(TTSPlayer.sBaseUrl) ) {
+				TTSPlayer.sBaseUrl = "api.zhiyin.sogou.com";        // 填入baseurl
+				CommonSharedPreference.getInstance(this).setString("uuid", ""); // 设置用户uuid
+				CommonSharedPreference.getInstance(this).setString("appid", ""); // 设置从知音平台获取的appid
+				CommonSharedPreference.getInstance(this).setString("appkey", "");
+			}
+
+			TokenFetchTask task = new TokenFetchTask(SgTTSActivity.this,TTSPlayer.sBaseUrl, new TokenFetchTask.TokenFetchListener() {
+				@Override
+				public void onTokenFetchSucc(String result) {
+					LogUtil.d("xq", "onTokenFetchSucc result " + result);
+					if (TextUtils.isEmpty(result)) {
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								Toast.makeText(SgTTSActivity.this, "初始化失败", Toast.LENGTH_SHORT).show();
+							}
+						});
+						return;
+					}
+					runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							doSynthPlay();
+						}
+					});
+				}
+
+				@Override
+				public void onTokenFetchFailed(String errMsg) {
+					LogUtil.d("xq", "onTokenFetchFailed errMsg " + errMsg);
+				}
+			});
+			task.execute();
+
 	}
 
 
