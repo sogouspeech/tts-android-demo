@@ -67,7 +67,7 @@ dependencies {
         exclude module: 'httpclient'
     }
 
-    implementation 'com.github.sogouspeech:tts-android-sdk:1.0.4'
+    implementation 'com.github.sogouspeech:tts-android-sdk:1.0.5'
 //    implementation project(':tts')
 //    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
     implementation 'com.github.sogouspeech:common-android-sdk:1.0.1'
