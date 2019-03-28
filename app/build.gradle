@@ -67,7 +67,9 @@ dependencies {
         exclude module: 'httpclient'
     }
 
-    implementation 'com.github.sogouspeech:tts-android-sdk:1.0.3'
+    implementation 'com.github.sogouspeech:tts-android-sdk:1.0.4'
+//    implementation project(':tts')
+//    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
     implementation 'com.github.sogouspeech:common-android-sdk:1.0.1'
     implementation 'com.android.support:multidex:1.0.0'
     api 'org.conscrypt:conscrypt-android:1.4.2'
