@@ -16,8 +16,6 @@ public class TtsAplication extends MultiDexApplication {
         ZhiyinInitInfo.Builder builder = new ZhiyinInitInfo.Builder();
         // 传入从知音平台申请获得的域名，从知音平台获取的appid，设备的uuid。如果需要刷新token则传入appkey，否则传入token
 //        ZhiyinInitInfo info = builder.setBaseUrl("").setUuid("").setAppid("").setAppkey("").setToken("").create();
-//        ZhiyinInitInfo info = builder.setBaseUrl("canary.speech.sogou.com").setUuid("aabb").setAppid("1DscivQKSL3rncPyvTnGsLdh4YD").setAppkey("0jxC05r2jrXTkJBr3WhBYEuJzZLVTE6KSsyvIljNbSYeE0qGv3rvCL7OgGHaOlkoTRia6jQGMGGpnZKwhTJ4ZA==").create();
-
 //        TTSPlayer.initZhiyinInfo(this,info);
     }
 }
