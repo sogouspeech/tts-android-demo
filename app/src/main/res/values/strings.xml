@@ -6,6 +6,7 @@
     <string name="version">SogouTTS_v3.1</string>
     <string name="speed">Speed(0.5~2.0)</string>
     <string name="synth_content">搜狗是中国互联网领先的搜索、输入法、浏览器和其它互联网产品及服务提供商。您只需花费5分钟的时间，就可以初步学会如何使用搜狗语音合成服务。</string>
+    <string name="synth_content_english">what is the weather like today</string>
     <!--<string name="synth_content">The problem exists if you have added "ActionBarSherlock" and "DropBox" jars to your project. To solve the problem, add the below line to your.The warning will be ignored and it will work because each of the jars alone are working. So I think, this will be the bug in ProGuard, if both are added.</string>-->
     <!--<string name="synth_content">こんにちは、今日の天気はどうですか？</string>-->
     <!--<string name="synth_content">오늘 날씨는 어때?</string>-->
